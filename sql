@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS 1lab;
-CREATE DATABASE IF NOT EXISTS 1lab;
-USE 1lab;
+DROP DATABASE IF EXISTS 2lab;
+CREATE DATABASE IF NOT EXISTS 2lab;
+USE 2lab;
 CREATE TABLE IF NOT EXISTS library(
    n INT PRIMARY KEY,
   code INT NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS library(
   price FLOAT,
   publisher VARCHAR(255),
   pages INT NOT NULL,
-  format INT NOT NULL,
+  format VARCHAR(255) NOT NULL,
   date DATE NOT NULL,
   circulation INT NOT NULL,
   theme VARCHAR(255),
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS library(
   (209, 5462, false, 'Язык программирования С++. Лекции и упражнения', 29.00, 'DiaSoft', 656, '2000-12-12', 5000, 'C&C++'),
   (210, 4982, false, 'Язык программирования С. Лекции и упражнения', 29.00, 'DiaSoft', 432, '2000-07-12', 500, 'C&C++'),
   (220, 4687, false, 'Эффективное использование C++ .50 рекомендаций по улучшению ваших программ и проектов', 17.60, 'ДМК', 240, '2000-02-03', 5000, 'C&C++');
-  UPDATE 1lab.library
+  UPDATE 2lab.library
 	SET format =
 	CASE
 	    	WHEN code = 3851 OR code = 5462 OR code = 4982 THEN '84х108/16'
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS library(
 		WHEN code = 5176 THEN ' '
         	ELSE '70х100/16'
 	END;
-    UPDATE 1lab.library
+    UPDATE 2lab.library
 	SET theme =
 	CASE
 	    	WHEN code = 5217 OR code = 4829 OR code = 5170 OR code = 860 OR code = 44 OR code = 5176 THEN 'Операційні системи'
@@ -53,11 +53,11 @@ CREATE TABLE IF NOT EXISTS library(
     		ELSE 'Використання ПК в цілому'
 	END;
     
-    CREATE UNIQUE INDEX idx_name ON 1lab.library (name);
-    CREATE INDEX idx_code ON 1lab.library (code);
+    CREATE UNIQUE INDEX idx_name ON 2lab.library (name);
+    CREATE INDEX idx_code ON 2lab.library (code);
 
-    ALTER TABLE 1lab.library ADD author VARCHAR(15);
-    ALTER TABLE 1lab.library MODIFY COLUMN author VARCHAR(20);
-    ALTER TABLE 1lab.library DROP COLUMN author;
-    ALTER TABLE 1lab.library MODIFY COLUMN `n` SMALLINT(5) UNSIGNED UNIQUE;
-    ALTER TABLE 1lab.library DROP COLUMN `n`;
+    ALTER TABLE 2lab.library ADD author VARCHAR(15);
+    ALTER TABLE 2lab.library MODIFY COLUMN author VARCHAR(20);
+    ALTER TABLE 2lab.library DROP COLUMN author;
+    ALTER TABLE 2lab.library MODIFY COLUMN `n` SMALLINT(5) UNSIGNED UNIQUE;
+    ALTER TABLE 2lab.library DROP COLUMN `n`;
