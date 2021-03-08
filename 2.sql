@@ -1,14 +1,14 @@
 // Вивести значення наступних колонок: номер, код, новинка, назва, ціна, сторінки
-SELECT n, cod, new, title, price, page FROM `librery`
+SELECT n, cod, new, title, price, page FROM `library`;
 
 // Вивести значення всіх колонок
-SELECT * FROM `library`
+SELECT * FROM `library`;
 
 // Вивести значення колонок в наступному порядку: код, назва, новинка, сторінки, ціна, номер
-SELECT cod, title, new, page, price, n FROM `library`
+SELECT cod, title, new, page, price, n FROM `library`;
 
 // Вивести значення всіх колонок 10 перших рядків
-SELECT * FROM `library` LIMIT 10
+SELECT * FROM `library` LIMIT 10;
 
 // Вивести значення колонки код без повторення однакових кодів
 SELECT DISTINCT cod FROM 2lab.library;
