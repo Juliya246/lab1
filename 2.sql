@@ -35,22 +35,22 @@ SELECT * FROM `library` WHERE `code` = 5110 OR `code` = 5141 OR `code` = 4985 OR
 SELECT * FROM `library` WHERE `date` LIKE '1999-%-%' OR `date` LIKE '2001-%-%' OR `date` LIKE '2003-%-%' OR `date` LIKE '2005-%-%'
 
 // Вивести книги назви яких починаються на літери А-К
-SELECT * FROM `library` WHERE `title` BETWEEN 'А' AND 'Л'
+SELECT * FROM `library` WHERE `name` BETWEEN 'А' AND 'Л'
 
 // Вивести книги назви яких починаються на літери "АПП", видані в 2000 році з ціною до 20
-SELECT * FROM `library` WHERE `title` LIKE 'Апп%' AND `dat` LIKE '2000-%-%' AND `price`<= 20
+SELECT * FROM `library` WHERE `name` LIKE 'Апп%' AND `dat` LIKE '2000-%-%' AND `price`<= 20
 
 // Вивести книги назви яких починаються на літери "АПП", закінчуються на "е", видані в першій половині 2000 року
-SELECT * FROM `library` WHERE `title` LIKE 'Апп%е' AND `dat` BETWEEN '2000-01-01' AND '2000-06-30'
+SELECT * FROM `library` WHERE `name` LIKE 'Апп%е' AND `dat` BETWEEN '2000-01-01' AND '2000-06-30'
 
 // Вивести книги, в назвах яких є слово Microsoft, але немає слова Windows
-SELECT * FROM `library` WHERE `title` LIKE '%Microsoft%' AND `title` NOT LIKE '%Windows%'
+SELECT * FROM `library` WHERE `name` LIKE '%Microsoft%' AND `name` NOT LIKE '%Windows%'
 
 // Вивести книги, в назвах яких присутня як мінімум одна цифра.
-SELECT * FROM `library` WHERE `title` RLIKE '[0-9]'
+SELECT * FROM `library` WHERE `name` RLIKE '[0-9]'
 
 // Вивести книги, в назвах яких присутні не менше трьох цифр.
-SELECT * FROM `library` WHERE `title` RLIKE '.*[0-9].*[0-9].*[0-9].*'
+SELECT * FROM `library` WHERE `name` RLIKE '.*[0-9].*[0-9].*[0-9].*'
 
 // Вивести книги, в назвах яких присутній рівно п'ять цифр.
-SELECT * FROM `library` WHERE `title` NOT RLIKE '.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*' AND `title` RLIKE '.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*'
+SELECT * FROM `library` WHERE `name` NOT RLIKE '.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*' AND `name` RLIKE '.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*'
