@@ -2,7 +2,7 @@
 SELECT * FROM `library` WHERE `price` = 0 OR `price` = NULL
 
 // Вивести книги у яких введена ціна, але не введений тираж
-SELECT * FROM `library` WHERE `price` <> NULL AND `circulation` = NULL
+SELECT * FROM `library` WHERE `price` IS NOT NULL AND `circulation` = NULL
 
 // Вивести книги, про дату видання яких нічого не відомо.
 SELECT * FROM `library` WHERE `date` = NULL
@@ -50,7 +50,7 @@ SELECT * FROM `library` WHERE 1
 
 // Додати інформацію про нову книгу (колонки обов'язкові для введення)
 INSERT INTO library (`n`, `code`, `name`, `price`, `publisher`, `pages`, `date`, `theme`, `category`)
-VALUE (240, 1633, 'Этюд в багровых тонах', 6.8, 'Азбука-классика', 448, '2017-04-04', 'Шерлок Холмс', 'Детектив');
+VALUE (240, 1633, 'Harry Potter', 8.01, 'Bloomsbury', 448, '2017-04-04', 'Манічний світ', 'Фентезі');
 SELECT * FROM `library` WHERE 1
 
 // Видалити книги, видані до 1990 року
