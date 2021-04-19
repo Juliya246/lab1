@@ -2,7 +2,7 @@
 SELECT COUNT(`n`) 'Загальна к-ть книг', ROUND(SUM(`price`),2) 'Загальна вартість', ROUND(AVG(`price`),2) 'Середня вартість', MIN(`price`) 'Мінімальна ціна', MAX(`price`) 'Максимальна ціна' FROM `books`
 
 //Вивести загальну кількість всіх книг без урахування книг з непроставленою ціною
-SELECT COUNT(`n`) 'Загальна к-ть книг з ціною' FROM `books` WHERE `price` <> 0
+SELECT COUNT(`n`) 'Загальна к-ть книг з ціною' FROM `library` WHERE `price` <> 0
 
 //Вивести статистику (див. 1) для книг новинка / не новинка
 SELECT `new` 'Новинка', COUNT(`n`) 'Загальна к-ть книг', ROUND(SUM(`price`),2) 'Загальна вартість', ROUND(AVG(`price`),2) 'Середня вартість', MIN(`price`) 'Мінімальна ціна', MAX(`price`) 'Максимальна ціна' FROM `books` GROUP BY `new`
