@@ -5,11 +5,11 @@
 //Скласти SQL-script, що виконує:
 //a.	Створення таблиць бази даних. Команди для створення таблиці повинні містити головний ключ, обмеження типу null / not null, default, check, створення зв'язків з умовами посилальної цілісності
 //b.	Завантаження даних в таблиці
-DROP DATABASE IF EXISTS shop;
-CREATE DATABASE IF NOT EXISTS shop;
+DROP DATABASE IF EXISTS booksshop;
+CREATE DATABASE IF NOT EXISTS booksshop;
 CREATE TABLE main(
     code SMALLINT(4) PRIMARY KEY,
-    title VARCHAR(100) NOT NULL DEFAULT '',
+    name VARCHAR(100) NOT NULL DEFAULT '',
     price FLOAT UNSIGNED NOT NULL
 );
 CREATE TABLE is_new(
