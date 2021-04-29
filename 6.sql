@@ -1,17 +1,17 @@
 //Вивести значення наступних колонок: назва книги, ціна, назва видавництва. Використовувати внутрішнє з'єднання, застосовуючи where.
-SELECT main.title, main.price, publishers.publishers FROM main, extra, publishers WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id;
+SELECT main.name, main.price, publishers.publishers FROM main, extra, publishers WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id;
 
 //Вивести значення наступних колонок: назва книги, назва категорії. Використовувати внутрішнє з'єднання, застосовуючи inner join.
-SELECT main.title, categories.categories FROM main INNER JOIN (extra, categories) ON extra.category = categories.category_id AND main.code = extra.code;
+SELECT main.name, categories.categories FROM main INNER JOIN (extra, categories) ON extra.category = categories.category_id AND main.code = extra.code;
 
 //Вивести значення наступних колонок: назва книги, ціна, назва видавництва, формат.
-SELECT main.title, main.price, publishers.publishers, formats.formats FROM main, extra, publishers, formats WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id AND extra.format = formats.format_id;
+SELECT main.name, main.price, publishers.publishers, formats.formats FROM main, extra, publishers, formats WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id AND extra.format = formats.format_id;
 
 //Вивести значення наступних колонок: тема, категорія, назва книги, назва видавництва. Фільтр по темам і категоріям.
-SELECT topics.topics, categories.categories, main.title, publishers.publishers FROM main, extra, publishers, topics, categories WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id AND extra.topic = topics.topic_id AND extra.category = categories.category_id AND topics.topics LIKE 'О%' AND categories.categories LIKE 'І%';
+SELECT topics.topics, categories.categories, main.name, publishers.publishers FROM main, extra, publishers, topics, categories WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id AND extra.topic = topics.topic_id AND extra.category = categories.category_id AND topics.topics LIKE 'О%' AND categories.categories LIKE 'І%';
 
 //Вивести книги видавництва 'BHV', видані після 2000 р
-SELECT main.title FROM main, extra, publishers WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id AND publishers.publishers LIKE 'BHV%' AND YEAR(extra.date) > 2000;
+SELECT main.name FROM main, extra, publishers WHERE main.code = extra.code AND extra.publisher = publishers.publisher_id AND publishers.publishers LIKE 'BHV%' AND YEAR(extra.date) > 2000;
 
 //Вивести загальну кількість сторінок по кожній назві категорії. Фільтр по спадаючій кількості сторінок.
 SELECT categories.categories, SUM(extra.pages) FROM main INNER JOIN (extra, categories) ON main.code = extra.code AND extra.category = categories.category_id GROUP BY categories.categories ORDER BY SUM(extra.pages) DESC
@@ -30,7 +30,7 @@ SELECT main.*, is_new.is_new, publishers.publishers, extra.pages, formats.format
 SELECT main.*, is_new.is_new, publishers.publishers, extra.pages, formats.formats, extra.date, extra.tirage, topics.topics, categories.categories FROM  (extra, is_new, publishers, formats, topics, categories) RIGHT JOIN main ON main.code = extra.code AND extra.is_new = is_new.is_new_id AND extra.publisher = publishers.publisher_id AND extra.format = formats.format_id AND extra.topic = topics.topic_id AND extra.category = categories.category_id;
 
 //Вивести пари книг, що мають однакову кількість сторінок. Використовувати само об’єднання і аліаси (self join).
-SELECT main1.title '1_book_title', main2.title '2_book_title' FROM main main1 JOIN (main main2, extra ex1 JOIN extra ex2) ON main1.code = ex1.code AND main2.code = ex2.code AND ex1.pages = ex2.pages AND main1.code != main2.code AND main1.code < main2.code;
+SELECT main1.name '1_book_name', main2.name '2_book_name' FROM main main1 JOIN (main main2, extra ex1 JOIN extra ex2) ON main1.code = ex1.code AND main2.code = ex2.code AND ex1.pages = ex2.pages AND main1.code != main2.code AND main1.code < main2.code;
 
 //Вивести тріади книг, що мають однакову ціну. Використовувати самооб'єднання і аліаси (self join).
 SELECT main1.title '1_book_title', main2.title '2_book_title', main3.title '3_book_title' FROM main main1 JOIN (main main2, main main3) ON main1.code != main2.code AND main1.code != main3.code AND main1.price = main2.price AND main1.price = main3.price AND main1.code < main2.code AND main2.code < main3.code;
